@@ -1,30 +1,52 @@
-<!-- This is the template for the products page. -->
+{% load custom_filters %}
+
 {% for product in data %}
-    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <th scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white truncate max-w-72">
-            {{ product.title }}
-        </th>
+    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50">
         <td class="px-6 py-4">
-            {{ product.description }}
+            <div class="max-w-xs truncate" title="{{ product.Handle }}">{{ product.Handle|default:"-" }}</div>
         </td>
         <td class="px-6 py-4">
-        {% if product.specs %}
-            <ul>
-                {# if product.specs exist #}
-                {% for key, value in product.specs.items %}
-                    <li>{{ key }} : {{ value }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+            <div class="max-w-xs truncate" title="{{ product.Title }}">{{ product.Title|default:"-" }}</div>
         </td>
         <td class="px-6 py-4">
-            {{ product.price }}
+            <div class="max-w-xs truncate" title="{{ product|dict_key:'Body (HTML)' }}">{{ product|dict_key:'Body (HTML)'|default:"-" }}</div>
         </td>
+        <td class="px-6 py-4 text-center">{{ product.Vendor|default:"-" }}</td>
         <td class="px-6 py-4">
-            {% for image_url in product.image_urls %}
-                <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href="{{ image_url }}" target="_blank">{{ image_url }}</a><br>
-            {% endfor %}
+            <div class="max-w-xs truncate" title="{{ product|dict_key:'Product Category' }}">{{ product|dict_key:'Product Category'|default:"-" }}</div>
         </td>
+        <td class="px-6 py-4">{{ product.Type|default:"-" }}</td>
+        <td class="px-6 py-4">
+            <div class="max-w-xs truncate" title="{{ product.Tags }}">{{ product.Tags|default:"-" }}</div>
+        </td>
+        <td class="px-6 py-4 text-center">{{ product.Published }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option1 Name'|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option1 Value'|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option2 Name'|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option2 Value'|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option3 Name'|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option3 Value'|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Variant SKU'|default:"-" }}</td>
+        <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Grams'|default:"0" }}</td>
+        <td class="px-6 py-4 text-center">${{ product|dict_key:'Variant Price'|default:"0.00" }}</td>
+        <td class="px-6 py-4 text-center">
+            {% if product|dict_key:'Variant Compare At Price' %}${{ product|dict_key:'Variant Compare At Price' }}{% else %}-{% endif %}
+        </td>
+        <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Requires Shipping' }}</td>
+        <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Taxable' }}</td>
+        <td class="px-6 py-4">
+            <div class="max-h-32 overflow-y-auto">
+                {% if product|dict_key:'Image Src' %}
+                    {% for url in product|dict_key:'Image Src'|split:"\n" %}
+                        <a href="{{ url }}" target="_blank" 
+                           class="block text-blue-600 hover:underline mb-1 truncate"
+                           title="{{ url }}">{{ url }}</a>
+                    {% endfor %}
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+        </td>
+        <td class="px-6 py-4 text-center">{{ product.Status|default:"-" }}</td>
     </tr>
 {% endfor %}

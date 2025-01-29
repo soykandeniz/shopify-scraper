@@ -50,99 +50,47 @@
         {#  output area   #}
         <div class="mt-20 justify-center" id="output-area">
 
+        
             <div class="block">
                 <a id="file-down-btn" style="top:-5px;"
-                   class="underline text-sm text-green-500 ml-auto disabled:text-slate-500 float-end relative"
-                >Download</a>
+                   class="underline text-sm text-green-500 ml-auto disabled:text-slate-500 float-end relative">Download</a>
             </div>
-
-            <div class="border border-green-100 p-0.5 rounded-lg overflow-auto"
-                 style="width: 100%; max-height: 58vh;">
-                <div class="relative shadow-md sm:rounded-lg">
-                    <table class="relative w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400" id="table-container">
+            
+            <div class="border border-green-100 p-0.5 rounded-lg overflow-x-auto" style="width: 100%; max-height: 58vh;">
+                <div class="relative shadow-md sm:rounded-lg min-w-[1500px]">
+                    <table class="w-full text-sm text-left text-gray-500" id="table-container">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-center">
-                                Title
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-center">
-                                Description
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-center">
-                                Specs
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-center">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-center">
-                                Images
-                            </th>
-                        </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-center">Handle</th>
+                                <th scope="col" class="px-6 py-3 text-center">Title</th>
+                                <th scope="col" class="px-6 py-3 text-center">Body (HTML)</th>
+                                <th scope="col" class="px-6 py-3 text-center">Vendor</th>
+                                <th scope="col" class="px-6 py-3 text-center">Product Category</th>
+                                <th scope="col" class="px-6 py-3 text-center">Type</th>
+                                <th scope="col" class="px-6 py-3 text-center">Tags</th>
+                                <th scope="col" class="px-6 py-3 text-center">Published</th>
+                                <th scope="col" class="px-6 py-3 text-center">Option1 Name</th>
+                                <th scope="col" class="px-6 py-3 text-center">Option1 Value</th>
+                                <th scope="col" class="px-6 py-3 text-center">Option2 Name</th>
+                                <th scope="col" class="px-6 py-3 text-center">Option2 Value</th>
+                                <th scope="col" class="px-6 py-3 text-center">Option3 Name</th>
+                                <th scope="col" class="px-6 py-3 text-center">Option3 Value</th>
+                                <th scope="col" class="px-6 py-3 text-center">Variant SKU</th>
+                                <th scope="col" class="px-6 py-3 text-center">Variant Grams</th>
+                                <th scope="col" class="px-6 py-3 text-center">Variant Price</th>
+                                <th scope="col" class="px-6 py-3 text-center">Variant Compare At Price</th>
+                                <th scope="col" class="px-6 py-3 text-center">Variant Requires Shipping</th>
+                                <th scope="col" class="px-6 py-3 text-center">Variant Taxable</th>
+                                <th scope="col" class="px-6 py-3 text-center">Image Src</th>
+                                <th scope="col" class="px-6 py-3 text-center">Status</th>
+                            </tr>
                         </thead>
                         <tbody id="product_tbody">
-                        {#                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">#}
-                        {#                            <th scope="row"#}
-                        {#                                class="px-6 py-4 font-medium text-gray-900 dark:text-white truncate max-w-72">#}
-                        {#                                Rolex Day-Date II 218206 Rolex Day-Date II 218206Rolex Day-Date II 218206Rolex Day-Date#}
-                        {#                                II 218206 Date II 218206#}
-                        {#                            </th>#}
-                        {#                            <td class="px-6 py-4">#}
-                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                Brand: RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                                PlatinumBracelet: PlatinumSize: 41mmDial Color: Ice BlueCrystal: SapphireBezel:#}
-                        {#                                PlatinumYear: Open-Date (Rolex Card w/o Date)Condition: Pre OwnedBox: YesPapers: Brand:#}
-                        {#                                RolexReference: 218206Model: Day-Date IIMovement: AutomaticCase:#}
-                        {#                            </td>#}
-                        {#                            <td class="px-6 py-4">#}
-                        {#                                <ul>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                    <li>Year : 1928</li>#}
-                        {#                                </ul>#}
-                        {#                            </td>#}
-                        {#                            <td class="px-6 py-4">#}
-                        {#                                13500.00#}
-                        {#                            </td>#}
-                        {#                            <td class="px-6 py-4">#}
-                        {#                                <a href="https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774"#}
-                        {#                                   target="_blank"#}
-                        {#                                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-                        {#                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">https://cdn.shopify.com/s/files/1/0561/0838/4345/files/DSC00045.jpg?v=1722279774</a>#}
-                        {##}
-                        {#                            </td>#}
-                        {#                        </tr>#}
-
                         </tbody>
                     </table>
                 </div>
             </div>
+
             {#            </div>#}
         </div>
 
@@ -154,7 +102,7 @@
         const linkedinUrl = document.getElementById("shopify-url");
         const tBody = document.getElementById("product_tbody");
 
-        {# scrape btn click #}
+        // scrape button
         document.getElementById("scrape-btn").addEventListener("click", function () {
             let url = linkedinUrl.value;
 
@@ -177,7 +125,7 @@
                         return response.text()
                     })
                     .then((html) => {
-                        {#console.log("data", html);#}
+                        // {#console.log("data", html);#}
                         scapeBtn.style.display = "inline-block";
                         processingBtn.style.display = "none";
                         tBody.innerHTML = html;
@@ -192,27 +140,42 @@
             }
         });
 
-        {#down btn click - 여기 구현은 나중에 바꿔야 할듯 다시 api를 호출하거나 index에서 결과를 refurn 받는것이 좋을듯 ., #}
-        const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {
-            const table = document.getElementById('table-container');
-            const rows = table.querySelectorAll('tr');
-            const data = [];
-            rows.forEach(row => {
-                const rowData = [];
-                row.querySelectorAll('th, td').forEach(cell => {
-                    rowData.push(cell.innerText);
-                });
-                data.push(rowData);
-            });
-            const jsonData = JSON.stringify(data);
-            const blob = new Blob([jsonData], {type: 'application/json'});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url
-            a.download = 'shopify.json';
-            document.body.appendChild(a);
-            a.click();
-         });
+    const dlAnchorElem = // Update click handler in your script section
+document.getElementById('file-down-btn').addEventListener("click", function () {
+    const table = document.getElementById('table-container');
+    const data = [];
+    
+    // Get headers from table
+    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+    data.push(headers);
+    
+    // Get table data
+    table.querySelectorAll('tbody tr').forEach(row => {
+        const rowData = Array.from(row.querySelectorAll('td')).map(cell => {
+            // Handle images/links
+            if (cell.querySelector('a')) {
+                return Array.from(cell.querySelectorAll('a'))
+                    .map(a => a.href)
+                    .join(', ');
+            }
+            // Handle lists
+            if (cell.querySelector('ul')) {
+                return Array.from(cell.querySelectorAll('li'))
+                    .map(li => li.textContent.trim())
+                    .join(', ');
+            }
+            // Regular text content
+            return cell.textContent.trim();
+        });
+        data.push(rowData);
+    });
+
+    // Create and download Excel file
+    const ws = XLSX.utils.aoa_to_sheet(data);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Products");
+    XLSX.writeFile(wb, "shopify_products.xlsx");
+});
 
     </script>
 
