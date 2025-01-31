@@ -3,35 +3,42 @@
 {% for product in data %}
     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50">
         <td class="px-6 py-4">
-            <div class="max-w-xs truncate" title="{{ product.Handle }}">{{ product.Handle|default:"-" }}</div>
+            <div class="max-w-xs truncate" title="{{ product.Handle }}">{{ product.Handle}}</div>
         </td>
         <td class="px-6 py-4">
-            <div class="max-w-xs truncate" title="{{ product.Title }}">{{ product.Title|default:"-" }}</div>
+            <div class="max-w-xs truncate" title="{{ product.Title }}">{{ product.Title}}</div>
         </td>
         <td class="px-6 py-4">
-            <div class="max-w-xs truncate" title="{{ product|dict_key:'Body (HTML)' }}">{{ product|dict_key:'Body (HTML)'|default:"-" }}</div>
+            <div class="max-w-xs truncate" title="{{ product|dict_key:'Body (HTML)' }}">{{ product|dict_key:'Body (HTML)'}}</div>
         </td>
-        <td class="px-6 py-4 text-center">{{ product.Vendor|default:"-" }}</td>
+        <td class="px-6 py-4 text-center">{{ product.Vendor}}</td>
         <td class="px-6 py-4">
-            <div class="max-w-xs truncate" title="{{ product|dict_key:'Product Category' }}">{{ product|dict_key:'Product Category'|default:"-" }}</div>
+            <div class="max-w-xs truncate" title="{{ product|dict_key:'Product Category' }}">{{ product|dict_key:'Product Category'}}</div>
         </td>
-        <td class="px-6 py-4">{{ product.Type|default:"-" }}</td>
+        <td class="px-6 py-4">{{ product.Type}}</td>
         <td class="px-6 py-4">
-            <div class="max-w-xs truncate" title="{{ product.Tags }}">{{ product.Tags|default:"-" }}</div>
+            <div class="max-w-xs truncate" title="{{ product.Tags }}">{{ product.Tags}}</div>
         </td>
         <td class="px-6 py-4 text-center">{{ product.Published }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Option1 Name'|default:"-" }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Option1 Value'|default:"-" }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Option2 Name'|default:"-" }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Option2 Value'|default:"-" }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Option3 Name'|default:"-" }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Option3 Value'|default:"-" }}</td>
-        <td class="px-6 py-4">{{ product|dict_key:'Variant SKU'|default:"-" }}</td>
-        <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Grams'|default:"0" }}</td>
-        <td class="px-6 py-4 text-center">${{ product|dict_key:'Variant Price'|default:"0.00" }}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option1 Name'}}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option1 Value'}}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option2 Name'}}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option2 Value'}}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option3 Name'}}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Option3 Value'}}</td>
+        <td class="px-6 py-4">{{ product|dict_key:'Variant SKU'}}</td>
+        <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Grams'}}</td>
         <td class="px-6 py-4 text-center">
-            {% if product|dict_key:'Variant Compare At Price' %}${{ product|dict_key:'Variant Compare At Price' }}{% else %}-{% endif %}
+            {% if product|dict_key:'Variant Price' %}
+                ${{ product|dict_key:'Variant Price' }}
+            {% endif %}
         </td>
+        <td class="px-6 py-4 text-center">
+            {% if product|dict_key:'Variant Compare At Price' %}
+                ${{ product|dict_key:'Variant Compare At Price' }}
+            {% endif %}
+        </td>
+
         <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Requires Shipping' }}</td>
         <td class="px-6 py-4 text-center">{{ product|dict_key:'Variant Taxable' }}</td>
         <td class="px-6 py-4">
@@ -47,6 +54,6 @@
                 {% endif %}
             </div>
         </td>
-        <td class="px-6 py-4 text-center">{{ product.Status|default:"-" }}</td>
+        <td class="px-6 py-4 text-center">{{ product.Status}}</td>
     </tr>
 {% endfor %}

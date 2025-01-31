@@ -140,41 +140,58 @@
             }
         });
 
-    const dlAnchorElem = // Update click handler in your script section
-document.getElementById('file-down-btn').addEventListener("click", function () {
+        const dlAnchorElem = document.getElementById('file-down-btn').addEventListener("click", function () {
     const table = document.getElementById('table-container');
-    const data = [];
+    const rows = [];
     
-    // Get headers from table
-    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
-    data.push(headers);
+    // Get headers
+    const headers = Array.from(table.querySelectorAll('thead th'))
+        .map(th => th.textContent.trim());
+    rows.push(headers.join(','));
     
     // Get table data
     table.querySelectorAll('tbody tr').forEach(row => {
         const rowData = Array.from(row.querySelectorAll('td')).map(cell => {
+            let value = '';
             // Handle images/links
             if (cell.querySelector('a')) {
-                return Array.from(cell.querySelectorAll('a'))
+                value = Array.from(cell.querySelectorAll('a'))
                     .map(a => a.href)
-                    .join(', ');
-            }
+                    .join('; ');
+            } 
             // Handle lists
-            if (cell.querySelector('ul')) {
-                return Array.from(cell.querySelectorAll('li'))
+            else if (cell.querySelector('ul')) {
+                value = Array.from(cell.querySelectorAll('li'))
                     .map(li => li.textContent.trim())
-                    .join(', ');
+                    .join('; ');
             }
             // Regular text content
-            return cell.textContent.trim();
+            else {
+                value = cell.textContent.trim();
+            }
+            // Escape commas and quotes in the value
+            value = value.replace(/"/g, '""');
+            if (value.includes(',') || value.includes('"') || value.includes('\n')) {
+                value = `"${value}"`;
+            }
+            return value;
         });
-        data.push(rowData);
+        rows.push(rowData.join(','));
     });
 
-    // Create and download Excel file
-    const ws = XLSX.utils.aoa_to_sheet(data);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Products");
-    XLSX.writeFile(wb, "shopify_products.xlsx");
+    // Create CSV content
+    const csvContent = rows.join('\n');
+    
+    // Create and trigger download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const downloadUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", downloadUrl);
+    link.setAttribute("download", "shopify_products.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(downloadUrl);
 });
 
     </script>
